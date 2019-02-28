@@ -1,17 +1,21 @@
 <template>
   <div class="home">
-    <searchBar />
+    <index>
+      <search-bar/>
+    </index>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import searchBar from '@/components/searchBar.vue';
+import SearchBar from '@/components/SearchBar.vue';
+import Index from '@/components/Index.vue';
 
 export default {
   name: 'home',
   components: {
-    searchBar,
+    SearchBar,
+    Index,
   },
 };
 </script>

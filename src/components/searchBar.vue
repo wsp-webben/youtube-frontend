@@ -1,5 +1,8 @@
 <template>
-  <input type="text" class="searchBar">
+  <div>
+    <input type="text" class="searchBar" v-model="query">
+    <p>{{ query }}</p>
+  </div>
 </template>
 
 <script>
@@ -8,7 +11,12 @@
 // showKittens();
 
 export default {
-  name: 'searchBar',
+  name: 'SearchBar',
+  data() {
+    return {
+      query: '',
+    };
+  },
 };
 </script>
 
