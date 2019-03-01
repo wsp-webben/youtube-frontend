@@ -1,9 +1,12 @@
 <template>
-  <div class="list">
-    <h1>This is a list page</h1>
+  <div class="List">
+    <h1 class="List__title">This is a list page</h1>
     <search-bar/>
+    {{ query }}
     <video-list>
-      <video-list-item/>
+      <video-list-item>video 1</video-list-item>
+      <video-list-item>video 2</video-list-item>
+      <video-list-item>video 3</video-list-item>
     </video-list>
   </div>
 </template>
@@ -20,5 +23,6 @@ export default {
     VideoList,
     VideoListItem,
   },
+  props: ['query'],
 };
 </script>

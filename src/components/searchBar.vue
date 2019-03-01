@@ -1,9 +1,11 @@
 <template>
   <div class="SearchBar">
     <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
-    <transition name="slide-fade">
+    <transition name="SearchBar__slide">
       <ul class="SearchBar__select" v-show="showSelect">
-        <li class="SearchBar__option" v-for="item in options" :key="item.key">{{ item }}</li>
+        <li class="SearchBar__option" v-for="item in options" :key="item.key">
+          <a class="SearchBar__link" :href="`list/${item.id}`">{{ item.title }}</a>
+        </li>
       </ul>
     </transition>
   </div>
@@ -18,7 +20,20 @@ export default {
     return {
       query: '',
       showSelect: false,
-      options: ['1', '2', '3'],
+      options: [
+        {
+          title: 'gfksdd',
+          id: '1',
+        },
+        {
+          title: 'advsccx',
+          id: '2',
+        },
+        {
+          title: 'qwr1r412',
+          id: '3',
+        },
+      ],
     };
   },
   watch: {
@@ -34,8 +49,7 @@ export default {
     },
   },
   methods: {
-    showSearchresult(data) {
-      this.options = data.map(item => item.snippet.title);
+    showSearchresult() {
       this.showSelect = true;
     },
   },
@@ -44,6 +58,8 @@ export default {
 
 
 <style lang="scss">
+  $bottom_border_radius: 10px;
+
   .SearchBar {
     margin: 0 auto;
     margin-bottom: 20px;
@@ -62,40 +78,7 @@ export default {
     }
   }
 
-  $bottom_border_radius: 10px;
-  .SearchBar__select {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: 1px solid #000;
-    border-top: 0;
-    list-style: none;
-
-    font-size: 16px;
-    border-bottom-left-radius: $bottom_border_radius;
-    border-bottom-right-radius: $bottom_border_radius;
-  }
-
-  .SearchBar__option {
-    padding: 8px;
-    border-bottom: 1px solid #000;;
-    text-align: left;
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-      background-color: rgba(#aaa, .3);
-    }
-
-    &:last-child {
-      border-bottom: 0;
-      border-bottom-left-radius: $bottom_border_radius;
-      border-bottom-right-radius: $bottom_border_radius;
-    }
-  }
-
-
-  .slide-fade {
+  .SearchBar__slide {
     &-enter-active,
     &-leave-active {
       transition: transform .2s ease-in;
@@ -104,6 +87,42 @@ export default {
     &-enter,
     &-leave-to {
       transform: translateY(-50%) scaleY(0);
+    }
+  }
+
+  .SearchBar__select {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: .8;
+    list-style: none;
+
+    font-size: 16px;
+    border-bottom-left-radius: $bottom_border_radius;
+    border-bottom-right-radius: $bottom_border_radius;
+  }
+
+  .SearchBar__option {
+    border: 1px solid #000;
+    border-top: 0;
+    border-bottom: 1px solid #000;;
+    text-align: left;
+
+    &:last-child {
+      border-bottom-left-radius: $bottom_border_radius;
+      border-bottom-right-radius: $bottom_border_radius;
+    }
+  }
+
+  .SearchBar__link {
+    display: block;
+    padding: 8px;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--main-color);
     }
   }
 </style>

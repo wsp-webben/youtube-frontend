@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { apiKey, baseUrl } from '@/consts';
 
-export default function search(query) {
+export default async function search(query) {
   return axios.get(`${baseUrl}/search`, {
     params: {
       key: apiKey,

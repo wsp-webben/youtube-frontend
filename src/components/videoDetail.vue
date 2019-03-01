@@ -1,5 +1,12 @@
 <template>
-  <div class="video-detail">
-    <h2 class="video-detail__title">{{ title }}</h2>
+  <div class="VideoDetail">
+    <h2 class="VideoDetail__title">{{ id }}</h2>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'VideoDetail',
+  props: ['id'],
+};
+</script>

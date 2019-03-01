@@ -18,14 +18,16 @@ export default new Router({
       redirect: '/',
     },
     {
-      path: '/list',
+      path: '/list/:query',
       name: 'list',
       component: () => import(/* webpackChunkName: "list" */ './views/List.vue'),
+      props: true,
     },
     {
-      path: '/watch',
+      path: '/watch/:videoId',
       name: 'watch',
       component: () => import(/* webpackChunkName: "watch" */ './views/Watch.vue'),
+      props: true,
     },
   ],
 });

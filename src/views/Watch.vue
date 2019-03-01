@@ -2,7 +2,7 @@
   <div class="watch">
     <h1>This is a watch page</h1>
     <search-bar/>
-    <video-detail/>
+    <video-detail :id="videoId"/>
   </div>
 </template>
 
@@ -16,5 +16,6 @@ export default {
     SearchBar,
     VideoDetail,
   },
+  props: ['videoId'],
 };
 </script>

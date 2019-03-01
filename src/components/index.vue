@@ -1,6 +1,12 @@
 <template>
-  <div class="Index">
+  <section class="Index">
+    <h1 class="Index__title">If you like YouTube, but hate red</h1>
     <slot></slot>
-    <h1>This is an index page</h1>
-  </div>
+  </section>
 </template>
+
+<style lang="scss">
+  .Index__title {
+    color: var(--main-color);
+  }
+</style>
