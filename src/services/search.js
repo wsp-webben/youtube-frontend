@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { apiKey, baseUrl } from '@/consts';
 
-export default function showKittens() {
-  axios.get(`${baseUrl}/search`, {
+export default function search(query) {
+  return axios.get(`${baseUrl}/search`, {
     params: {
       key: apiKey,
       part: 'snippet',
-      q: 'kittens',
+      q: query,
       type: 'video',
+      maxResults: 5,
+      relevanceLanguage: 'ru',
     },
   })
-    .then(res => console.log('good:', res))
-    .catch(rej => console.log('fail:', rej));
+    .then(res => res.data.items);
 }
