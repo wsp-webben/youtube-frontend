@@ -9,7 +9,7 @@ export default function search(query) {
       q: query,
       type: 'video',
       maxResults: 5,
-      relevanceLanguage: 'ru',
+      relevanceLanguage: 'en',
     },
   })
     .then(res => res.data.items);
