@@ -4,7 +4,7 @@
     <transition name="SearchBar__slide">
       <ul class="SearchBar__select" v-show="showSelect">
         <li class="SearchBar__option" v-for="item in options" :key="item.key">
-          <a class="SearchBar__link" :href="`list?q=${item.id}`">{{ item.title }}</a>
+          <a class="SearchBar__link" :href="`list?q=${item}`">{{ item }}</a>
         </li>
       </ul>
     </transition>
@@ -12,7 +12,8 @@
 </template>
 
 <script>
-// import search from '@/services/search';
+
+import suggest from '@/services/suggest';
 
 export default {
   name: 'SearchBar',
@@ -20,29 +21,16 @@ export default {
     return {
       query: '',
       showSelect: false,
-      options: [
-        {
-          title: 'gfksdd',
-          id: '1',
-        },
-        {
-          title: 'advsccx',
-          id: '2',
-        },
-        {
-          title: 'qwr1r412',
-          id: '3',
-        },
-      ],
+      options: ['1', '2', '3', '4'],
     };
   },
   watch: {
     query(apiQuery) {
       if (apiQuery.length > 1) {
         this.showSelect = true;
-        // search(apiQuery)
-        //   .then(this.showSearchresult)
-        //   .catch(err => console.log(err));
+        suggest(apiQuery, (data) => {
+          this.options = data;
+        });
       } else {
         this.showSelect = false;
       }
