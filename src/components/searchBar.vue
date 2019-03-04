@@ -4,7 +4,7 @@
     <transition name="SearchBar__slide">
       <ul class="SearchBar__select" v-show="showSelect">
         <li class="SearchBar__option" v-for="item in options" :key="item.key">
-          <a class="SearchBar__link" :href="`list/${item.id}`">{{ item.title }}</a>
+          <a class="SearchBar__link" :href="`list?q=${item.id}`">{{ item.title }}</a>
         </li>
       </ul>
     </transition>
@@ -61,9 +61,9 @@ export default {
   $bottom_border_radius: 10px;
 
   .SearchBar {
+    position: relative;
     margin: 0 auto;
     margin-bottom: 20px;
-    padding: 10px;
     text-align-last: left;
     max-width: 300px;
   }
@@ -91,6 +91,7 @@ export default {
   }
 
   .SearchBar__select {
+    position: absolute;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -107,6 +108,7 @@ export default {
     border-top: 0;
     border-bottom: 1px solid #000;;
     text-align: left;
+    background-color: #fff;
 
     &:last-child {
       border-bottom-left-radius: $bottom_border_radius;
