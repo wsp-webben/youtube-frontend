@@ -2,43 +2,27 @@
   <div class="SearchBar">
     <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
     <transition name="SearchBar__slide">
-      <ul class="SearchBar__select" v-show="showSelect">
-        <li class="SearchBar__option" v-for="item in options" :key="item.key">
-          <a class="SearchBar__link" :href="`list?q=${item}`">{{ item }}</a>
-        </li>
-      </ul>
+      <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
     </transition>
   </div>
 </template>
 
 <script>
-
-import suggest from '@/services/suggest';
+import Autosuggest from '@/components/Autosuggest.vue';
 
 export default {
   name: 'SearchBar',
+  components: {
+    Autosuggest,
+  },
   data() {
     return {
       query: '',
-      showSelect: false,
-      options: ['1', '2', '3', '4'],
     };
   },
-  watch: {
-    query(apiQuery) {
-      if (apiQuery.length > 1) {
-        this.showSelect = true;
-        suggest(apiQuery, (data) => {
-          this.options = data;
-        });
-      } else {
-        this.showSelect = false;
-      }
-    },
-  },
-  methods: {
-    showSearchresult() {
-      this.showSelect = true;
+  computed: {
+    showSelect() {
+      return this.query.length > 1;
     },
   },
 };
@@ -46,8 +30,6 @@ export default {
 
 
 <style lang="scss">
-  $bottom_border_radius: 10px;
-
   .SearchBar {
     position: relative;
     margin: 0 auto;
@@ -78,41 +60,7 @@ export default {
     }
   }
 
-  .SearchBar__select {
+  .SearchBar__autosuggest {
     position: absolute;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    opacity: .8;
-    list-style: none;
-
-    font-size: 16px;
-    border-bottom-left-radius: $bottom_border_radius;
-    border-bottom-right-radius: $bottom_border_radius;
-  }
-
-  .SearchBar__option {
-    border: 1px solid #000;
-    border-top: 0;
-    border-bottom: 1px solid #000;;
-    text-align: left;
-    background-color: #fff;
-
-    &:last-child {
-      border-bottom-left-radius: $bottom_border_radius;
-      border-bottom-right-radius: $bottom_border_radius;
-    }
-  }
-
-  .SearchBar__link {
-    display: block;
-    padding: 8px;
-    color: inherit;
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: var(--main-color);
-    }
   }
 </style>

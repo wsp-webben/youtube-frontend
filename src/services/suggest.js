@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 
 export default function suggest(query, cb) {
-  const googleAutoSuggestURL = '//suggestqueries.google.com/complete/search?client=youtube&hl=ru&ds=yt&q=';
+  const googleAutoSuggestURL = '//suggestqueries.google.com/complete/search?client=youtube&hl=en&ds=yt&q=';
   const url = googleAutoSuggestURL + query;
   const queryLimit = 5;
   let result;
