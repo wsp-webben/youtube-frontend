@@ -1,6 +1,9 @@
 <template>
   <div class="SearchBar">
-    <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
+    <div class="SearchBar__field">
+      <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
+      <a class="SearchBar__button" :href="`list?q=${query}`">Search</a>
+    </div>
     <transition name="SearchBar__slide">
       <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
     </transition>
@@ -38,13 +41,50 @@ export default {
     max-width: 300px;
   }
 
+  .SearchBar__field {
+    display: flex;
+  }
+
   .SearchBar__input {
-    width: 100%;
-    padding: 10px 8px;
-    border: 1px solid var(--secondary-color);
+    flex-grow: 1;
+    padding: 12px 10px;
+    border: 1px solid var(--main-color);
+    color: var(--secondary-color);
+    border-right: 0;
 
     &:focus {
+      box-shadow: inset 0 0 10px 2px var(--main-color);
       outline: 0;
+    }
+  }
+
+  $size: 10px;
+  .SearchBar__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $size * 4;
+    font-size: 0;
+    color: #fff;
+    background-color: var(--main-color);
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: $size 0 $size ($size * 1.5);
+      border-color: transparent transparent transparent #fff;
+      transition: transform 0.3s;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        transform: scale(1.25);
+      }
     }
   }
 

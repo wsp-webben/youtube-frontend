@@ -52,6 +52,11 @@ export default {
     &:last-child {
       border-bottom-left-radius: $bottom_border_radius;
       border-bottom-right-radius: $bottom_border_radius;
+
+      .Autosuggest__link {
+        border-bottom-left-radius: $bottom_border_radius;
+        border-bottom-right-radius: $bottom_border_radius;
+      }
     }
   }
 
@@ -63,7 +68,9 @@ export default {
 
     &:hover,
     &:focus {
-      color: var(--main-color);
+      background-color: var(--main-color);
+      color: #fff;
+      outline: 0;
     }
   }
 </style>
