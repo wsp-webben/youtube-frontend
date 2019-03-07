@@ -8,9 +8,16 @@ export default async function search(query) {
       part: 'snippet',
       q: query,
       type: 'video',
-      maxResults: 5,
+      maxResults: 10,
       relevanceLanguage: 'en',
     },
   })
-    .then(res => res.data.items);
+    .then(res => res.data.items
+      .map(data => ({
+        id: data.id.videoId,
+        title: data.snippet.title,
+        desc: data.snippet.description,
+        thumb: data.snippet.thumbnails.default,
+        channel: data.snippet.channelTitle,
+      })));
 }

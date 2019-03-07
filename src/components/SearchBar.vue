@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     showSelect() {
-      return this.query.length > 1;
+      return this.query.length;
     },
   },
 };

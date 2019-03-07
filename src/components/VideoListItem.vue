@@ -1,7 +1,14 @@
 <template>
   <li class="VideoListItem">
     <span class="VideoListItem__title">
-      <slot></slot>
+      {{ video.title }}
     </span>
   </li>
 </template>
+
+<script>
+export default {
+  name: 'VideoListItem',
+  props: ['video'],
+};
+</script>
