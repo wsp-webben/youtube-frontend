@@ -41,7 +41,8 @@ export default {
   }
 
   .VideoListItem__title {
-    margin: 0.5em 0;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 
     text-align: left;
     font-size: 18px;

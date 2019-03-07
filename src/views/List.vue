@@ -1,7 +1,7 @@
 <template>
   <div class="List">
     <search-bar/>
-    <h1 class="List__title">Best videos about <span class="List__query">{{ query }}:</span></h1>
+    <h1 class="List__title">Best videos about <span class="List__query">{{ query }}</span>:</h1>
     <video-list :query="query"/>
   </div>
 </template>

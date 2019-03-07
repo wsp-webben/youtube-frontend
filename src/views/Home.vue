@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <index>
       <search-bar/>
-    </index>
+    <index/>
   </div>
 </template>
 

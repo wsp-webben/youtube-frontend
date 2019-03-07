@@ -3,10 +3,12 @@
     <div class="SearchBar__field">
       <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
       <a class="SearchBar__button" :href="`list?q=${query}`">Search</a>
+      <transition name="SearchBar__slide">
+        <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
+      </transition>
     </div>
-    <transition name="SearchBar__slide">
-      <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
-    </transition>
+    <span class="SearchBar__logo" v-if="isHome">YouTubeGreen</span>
+    <a class="SearchBar__logo" href="/" v-else>YouTubeGreen</a>
   </div>
 </template>
 
@@ -27,6 +29,9 @@ export default {
     showSelect() {
       return this.query.length;
     },
+    isHome() {
+      return (this.$route.path === '/');
+    },
   },
 };
 </script>
@@ -34,23 +39,24 @@ export default {
 
 <style lang="scss">
   .SearchBar {
-    position: relative;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    display: flex;
+    padding: 20px;
     text-align-last: left;
-    max-width: 300px;
+    background-color: darken(#59a080, 10%);
   }
 
   .SearchBar__field {
+    position: relative;
     display: flex;
+    flex-grow: 1;
+    max-width: 500px;
   }
 
   .SearchBar__input {
     flex-grow: 1;
     padding: 12px 10px;
-    border: 1px solid var(--main-color);
+    border: 0;
     color: var(--secondary-color);
-    border-right: 0;
 
     &:focus {
       box-shadow: inset 0 0 10px 2px var(--main-color);
@@ -102,5 +108,25 @@ export default {
 
   .SearchBar__autosuggest {
     position: absolute;
+    top: 100%;
+  }
+
+  .SearchBar__logo {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+
+    transition: transform 0.3s;
+    transform-origin: right;
+
+    &[href] {
+      &:hover,
+      &:focus {
+        transform: scale(1.3);
+      }
+    }
   }
 </style>
