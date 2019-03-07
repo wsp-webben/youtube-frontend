@@ -34,7 +34,6 @@ export default {
     width: 100%;
     margin: 0;
     padding: 0;
-    opacity: .8;
     list-style: none;
 
     font-size: 16px;

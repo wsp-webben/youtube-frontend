@@ -1,7 +1,7 @@
 <template>
   <div class="List">
-    <h1 class="List__title">This is a list page</h1>
     <search-bar/>
+    <h1 class="List__title">Best videos about <span class="List__query">{{ query }}:</span></h1>
     <video-list :query="query"/>
   </div>
 </template>
@@ -19,3 +19,14 @@ export default {
   props: ['query'],
 };
 </script>
+
+<style lang="scss">
+  .List__title {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .List__query {
+    color: var(--main-color);
+  }
+</style>

@@ -29,3 +29,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  $gap: 20px;
+
+  .VideoList__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: $gap;
+    grid-row-gap: $gap * 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: ($gap * 2);
+    padding-top: 0;
+
+    list-style: none;
+  }
+</style>
