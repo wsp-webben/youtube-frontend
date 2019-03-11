@@ -38,11 +38,23 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: $gap;
     grid-row-gap: $gap * 2;
-    max-width: 1240px;
+    max-width: var(--wrapper-width);
     margin: 0 auto;
-    padding: ($gap * 2);
+    padding: $gap;
     padding-top: 0;
 
     list-style: none;
+  }
+
+  @media (max-width: 900px) {
+    .VideoList__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 450px) {
+    .VideoList__list {
+      display: block;
+    }
   }
 </style>

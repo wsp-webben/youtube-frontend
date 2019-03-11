@@ -34,6 +34,8 @@ export default {
 
 <style lang="scss">
   .VideoDetail {
+    max-width: var(--wrapper-width);
+    margin: 0 auto;
     padding: 20px;
   }
 
@@ -56,7 +58,6 @@ export default {
     justify-content: space-between;
     margin-top: .5em;
     margin-bottom: 1em;
-    padding: 0 20px;
   }
 
   .VideoDetail__title {
@@ -72,5 +73,19 @@ export default {
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+   @media (max-width: 450px) {
+    .VideoDetail__title {
+      font-size: 18px;
+    }
+
+    .VideoDetail__channel {
+      font-size: 14px;
+    }
+
+    .VideoDetail__description {
+      font-size: 14px;
+    }
   }
 </style>

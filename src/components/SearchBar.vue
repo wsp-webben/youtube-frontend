@@ -1,14 +1,16 @@
 <template>
   <div class="SearchBar">
-    <div class="SearchBar__field">
-      <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
-      <a class="SearchBar__button" :href="`list?q=${query}`">Search</a>
-      <transition name="SearchBar__slide">
-        <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
-      </transition>
+    <div class="SearchBar__wrapper">
+      <div class="SearchBar__field">
+        <input type="text" class="SearchBar__input" v-model="query" placeholder="Search">
+        <a class="SearchBar__button" :href="query?`list?q=${query}`:'/'">Search</a>
+        <transition name="SearchBar__slide">
+          <autosuggest class="SearchBar__autosuggest" :query="query" v-show="showSelect"/>
+        </transition>
+      </div>
+      <span class="SearchBar__logo" v-if="isHome">YouTubeGreen</span>
+      <a class="SearchBar__logo" href="/" v-else>YouTubeGreen</a>
     </div>
-    <span class="SearchBar__logo" v-if="isHome">YouTubeGreen</span>
-    <a class="SearchBar__logo" href="/" v-else>YouTubeGreen</a>
   </div>
 </template>
 
@@ -39,10 +41,15 @@ export default {
 
 <style lang="scss">
   .SearchBar {
+    background-color: darken(#59a080, 10%);
+  }
+
+  .SearchBar__wrapper {
     display: flex;
+    max-width: var(--wrapper-width);
+    margin: 0 auto;
     padding: 20px;
     text-align-last: left;
-    background-color: darken(#59a080, 10%);
   }
 
   .SearchBar__field {
@@ -108,6 +115,7 @@ export default {
 
   .SearchBar__autosuggest {
     position: absolute;
+    z-index: 1;
     top: 100%;
   }
 
@@ -115,6 +123,7 @@ export default {
     display: flex;
     align-items: center;
     margin-left: auto;
+    padding-left: 20px;
     color: #fff;
     text-decoration: none;
     font-size: 20px;
@@ -127,6 +136,25 @@ export default {
       &:focus {
         transform: scale(1.3);
       }
+    }
+  }
+
+  @media (max-width: 450px) {
+    .SearchBar__input {
+      width: 120px;
+      padding: 7px;
+    }
+
+    .SearchBar__button {
+      width: 30px;
+
+      &::after {
+        border-width: 7px 0 7px 10px;
+      }
+    }
+
+    .SearchBar__logo {
+      font-size: 16px;
     }
   }
 </style>

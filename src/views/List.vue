@@ -22,11 +22,19 @@ export default {
 
 <style lang="scss">
   .List__title {
+    font-size: 30px;
     margin-top: 0.5em;
     margin-bottom: 1em;
+    padding: 0 20px;
   }
 
   .List__query {
     color: var(--main-color);
+  }
+
+  @media (max-width: 450px) {
+    .List__title {
+      font-size: 20px;
+    }
   }
 </style>

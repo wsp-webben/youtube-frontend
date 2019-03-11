@@ -6,8 +6,10 @@
            :alt="video.title"
            :width="video.thumb.width"
            :height="video.thumb.height">
-      <h2 class="VideoListItem__title">{{ video.title }}</h2>
-      <span class="VideoListItem__channel">{{ video.channel }}</span>
+      <div class="VideoListItem__headers">
+        <h2 class="VideoListItem__title">{{ video.title }}</h2>
+        <span class="VideoListItem__channel">{{ video.channel }}</span>
+      </div>
     </a>
   </li>
 </template>
@@ -40,10 +42,15 @@ export default {
     height: auto;
   }
 
-  .VideoListItem__title {
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+  .VideoListItem__headers {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+  }
 
+  .VideoListItem__title {
+    flex-grow: 1;
+    margin: 0;
     text-align: left;
     font-size: 18px;
     font-weight: 600;
@@ -51,8 +58,18 @@ export default {
 
   .VideoListItem__channel {
     display: block;
-    margin-top: auto;
-    text-align: left;
+    margin-left: 20px;
+    text-align: right;
     color: var(--main-color);
+  }
+
+  @media (max-width: 450px) {
+    .VideoListItem {
+      margin-bottom: 20px;
+    }
+
+    .VideoListItem__title {
+      margin-bottom: 0.5em;
+    }
   }
 </style>

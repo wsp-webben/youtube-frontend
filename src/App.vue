@@ -11,6 +11,7 @@
 
 <style lang="scss">
 :root {
+  --wrapper-width: 1200px;
   --main-color: #42b983;
   --secondary-color: #2c3e50;
 }
