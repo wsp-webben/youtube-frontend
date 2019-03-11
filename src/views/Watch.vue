@@ -1,6 +1,5 @@
 <template>
   <div class="watch">
-    <h1>This is a watch page</h1>
     <search-bar/>
     <video-detail :id="videoId"/>
   </div>
