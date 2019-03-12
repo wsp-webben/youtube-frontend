@@ -1,7 +1,7 @@
 <template>
   <div class="VideoDetail">
     <div class="VideoDetail__container">
-      <iframe class="VideoDetail__player" :src="`http://www.youtube.com/embed/${id}`" frameborder="0"/>
+      <iframe class="VideoDetail__player" :src="`https://www.youtube.com/embed/${id}`" frameborder="0"/>
     </div>
     <div class="VideoDetail__headers">
       <h2 class="VideoDetail__title">{{ video.title }}</h2>
@@ -26,7 +26,6 @@ export default {
     getVideo(this.id)
       .then((res) => {
         this.video = res;
-        console.log(res);
       });
   },
 };
